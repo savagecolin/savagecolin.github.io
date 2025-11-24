@@ -3,172 +3,696 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinSavvy Pro | Finance Professional</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
-    <script src="components/navbar.js"></script>
-    <script src="components/footer.js"></script>
+    <title>Colin J | Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #e2e8f0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--secondary);
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about {
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            text-align: left;
+        }
+
+        .about-text h2:after {
+            left: 0;
+            transform: none;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background: var(--gray);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Projects Section */
+        .projects {
+            background: #f8fafc;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .project-img {
+            height: 200px;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-content h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-content p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: white;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 30px;
+            margin-bottom: 50px;
+            position: relative;
+            width: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            padding-left: 30px;
+            padding-right: 0;
+            margin-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+        }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            top: 0;
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even):before {
+            left: -10px;
+            right: auto;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact h2:after {
+            background: white;
+        }
+
+        .contact p {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            padding: 10px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+
+        .contact-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .hero-content {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .timeline:before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 50px;
+                padding-right: 0;
+            }
+            
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+            }
+            
+            .timeline-item:before {
+                left: 10px;
+                right: auto;
+            }
+            
+            .timeline-item:nth-child(even):before {
+                left: 10px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-    <custom-navbar></custom-navbar>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Colin<span>J</span></div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    <main class="container mx-auto px-4 py-12">
-        <!-- Hero Section -->
-        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-20">
-            <div class="md:w-1/2">
-                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-indigo-700">Maximizing Wealth, Minimizing Risk</h1>
-                <p class="text-xl text-gray-600 mb-8">Strategic financial solutions tailored to your unique goals. With over a decade in investment banking and portfolio management, I help clients navigate complex markets with confidence.</p>
-                <div class="flex gap-4">
-                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Get in Touch</a>
-                    <a href="#services" class="border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition duration-300">My Services</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span style="color: var(--primary)">Colin J</span></h1>
+                <p>A passionate developer focused on creating impactful digital solutions. I build efficient, scalable applications with modern technologies.</p>
+                <div class="hero-btns">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline" style="color: var(--dark); border-color: var(--dark);">Contact Me</a>
                 </div>
             </div>
-            <div class="md:w-1/2">
-                <img src="http://static.photos/finance/640x360/42" alt="Finance Professional" class="rounded-xl shadow-xl w-full h-auto">
-            </div>
-        </section>
+        </div>
+        <div class="hero-image">
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#2563eb" d="M57.6,258.8c48.8-119.5,184.1-176,303.6-127.2c119.5,48.8,176,184.1,127.2,303.6c-48.8,119.5-184.1,176-303.6,127.2 C-35.3,413.6-91.8,278.3-43,158.8" opacity="0.1"></path>
+                <circle cx="250" cy="250" r="180" fill="#2563eb" opacity="0.1"></circle>
+                <circle cx="250" cy="250" r="130" fill="#2563eb" opacity="0.1"></circle>
+                <circle cx="250" cy="250" r="80" fill="#2563eb" opacity="0.1"></circle>
+            </svg>
+        </div>
+    </section>
 
-        <!-- Expertise Section -->
-        <section id="expertise" class="mb-20">
-            <h2 class="text-3xl font-bold mb-12 text-center text-indigo-700">Areas of Expertise</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                        <i data-feather="trending-up" class="text-indigo-600 w-8 h-8"></i>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About Me</h2>
+                    <p>I'm a software developer with a passion for creating efficient, user-friendly applications. With experience in both front-end and back-end development, I enjoy solving complex problems and building solutions that make a difference.</p>
+                    <p>When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or enjoying outdoor activities.</p>
+                    <div class="skills">
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">React</span>
+                        <span class="skill">Node.js</span>
+                        <span class="skill">Python</span>
+                        <span class="skill">Git</span>
+                        <span class="skill">HTML/CSS</span>
+                        <span class="skill">SQL</span>
+                        <span class="skill">AWS</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Investment Strategy</h3>
-                    <p class="text-gray-600">Custom portfolio construction with optimal asset allocation for your risk profile and financial objectives.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                        <i data-feather="dollar-sign" class="text-indigo-600 w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Wealth Management</h3>
-                    <p class="text-gray-600">Comprehensive financial planning including tax optimization, estate planning, and retirement strategies.</p>
-                </div>
-                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
-                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
-                        <i data-feather="bar-chart-2" class="text-indigo-600 w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-bold mb-3">Market Analysis</h3>
-                    <p class="text-gray-600">Data-driven insights into market trends, economic indicators, and emerging opportunities.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="mb-20 bg-indigo-50 rounded-xl p-12">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/3">
-                    <img src="http://static.photos/office/640x360/23" alt="Professional Headshot" class="rounded-xl shadow-md w-full h-auto">
-                </div>
-                <div class="md:w-2/3">
-                    <h2 class="text-3xl font-bold mb-6 text-indigo-700">About Me</h2>
-                    <p class="text-lg text-gray-600 mb-6">With 12 years of experience in global financial markets, I've helped high-net-worth individuals and institutional clients achieve their financial objectives through disciplined investment strategies and innovative wealth solutions.</p>
-                    <p class="text-lg text-gray-600 mb-6">Former Vice President at Goldman Sachs and current CFA charterholder, I bring a unique combination of technical expertise and practical market experience to every client relationship.</p>
-                    <div class="flex flex-wrap gap-4">
-                        <span class="bg-white px-4 py-2 rounded-full text-indigo-600 font-medium shadow-sm">CFA Charterholder</span>
-                        <span class="bg-white px-4 py-2 rounded-full text-indigo-600 font-medium shadow-sm">MBA, Wharton</span>
-                        <span class="bg-white px-4 py-2 rounded-full text-indigo-600 font-medium shadow-sm">Series 7 & 63</span>
+                <div class="about-image">
+                    <!-- Placeholder for your photo -->
+                    <div style="background: var(--gray); height: 400px; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-user" style="font-size: 5rem; color: var(--secondary);"></i>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Services Section -->
-        <section id="services" class="mb-20">
-            <h2 class="text-3xl font-bold mb-12 text-center text-indigo-700">Professional Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-indigo-600">
-                    <h3 class="text-xl font-bold mb-4 text-indigo-700">Private Client Advisory</h3>
-                    <p class="text-gray-600 mb-6">Personalized investment management for individuals and families with assets over $2M.</p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
-                            <span>Custom portfolio construction</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
-                            <span>Tax-efficient investing</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
-                            <span>Family office services</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="text-indigo-600 font-medium hover:text-indigo-800 transition duration-300 flex items-center">
-                        Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                    </a>
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Data Visualization Dashboard</h3>
+                        <p>A responsive dashboard for visualizing complex datasets with interactive charts and real-time updates.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">View Project</a>
+                            <a href="#" class="btn btn-outline">GitHub</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-indigo-600">
-                    <h3 class="text-xl font-bold mb-4 text-indigo-700">Institutional Consulting</h3>
-                    <p class="text-gray-600 mb-6">Strategic advisory for endowments, foundations, and corporate clients.</p>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex items-start">
-                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
-                            <span>Asset-liability management</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
-                            <span>Manager selection & due diligence</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
-                            <span>ESG integration</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="text-indigo-600 font-medium hover:text-indigo-800 transition duration-300 flex items-center">
-                        Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
-                    </a>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with user authentication, payment processing, and inventory management.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">View Project</a>
+                            <a href="#" class="btn btn-outline">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3>Task Management App</h3>
+                        <p>Cross-platform mobile application for task management with synchronization across devices.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn">View Project</a>
+                            <a href="#" class="btn btn-outline">GitHub</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="bg-indigo-700 text-white rounded-xl p-12 mb-20">
-            <div class="max-w-4xl mx-auto">
-                <h2 class="text-3xl font-bold mb-2">Ready to discuss your financial goals?</h2>
-                <p class="text-xl text-indigo-100 mb-8">Schedule a confidential consultation to explore how we can work together.</p>
-                
-                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label for="name" class="block mb-2 font-medium">Full Name</label>
-                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2022 - Present</div>
+                        <h3>Software Developer</h3>
+                        <p>Tech Solutions Inc.</p>
+                        <p>Developed and maintained web applications using React and Node.js. Collaborated with cross-functional teams to deliver high-quality software solutions.</p>
                     </div>
-                    <div>
-                        <label for="email" class="block mb-2 font-medium">Email Address</label>
-                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2021 - 2022</div>
+                        <h3>Frontend Developer</h3>
+                        <p>Digital Agency</p>
+                        <p>Created responsive web designs and implemented interactive features for various clients. Optimized websites for performance and accessibility.</p>
                     </div>
-                    <div>
-                        <label for="phone" class="block mb-2 font-medium">Phone Number</label>
-                        <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date">2020 - 2021</div>
+                        <h3>Web Development Intern</h3>
+                        <p>Startup Company</p>
+                        <p>Assisted in developing company website and internal tools. Gained experience in full-stack development and agile methodologies.</p>
                     </div>
-                    <div>
-                        <label for="service" class="block mb-2 font-medium">Service Interest</label>
-                        <select id="service" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
-                            <option value="">Select a service</option>
-                            <option value="private">Private Client Advisory</option>
-                            <option value="institutional">Institutional Consulting</option>
-                            <option value="other">Other Inquiry</option>
-                        </select>
-                    </div>
-                    <div class="md:col-span-2">
-                        <label for="message" class="block mb-2 font-medium">Message</label>
-                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white"></textarea>
-                    </div>
-                    <button type="submit" class="md:col-span-2 bg-white text-indigo-700 hover:bg-indigo-100 px-6 py-3 rounded-lg font-bold transition duration-300">Submit Inquiry</button>
-                </form>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <custom-footer></custom-footer>
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.</p>
+            <div class="contact-links">
+                <a href="mailto:hello@colinj.me" class="contact-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>hello@colinj.me</span>
+                </a>
+                <a href="https://linkedin.com/in/yourprofile" class="contact-link">
+                    <i class="fab fa-linkedin"></i>
+                    <span>LinkedIn</span>
+                </a>
+                <a href="https://github.com/yourusername" class="contact-link">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="tel:+1234567890" class="contact-link">
+                    <i class="fas fa-phone"></i>
+                    <span>+1 (234) 567-890</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Colin J. All rights reserved.</p>
+        </div>
+    </footer>
 
     <script>
-        feather.replace();
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        hamburger.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                }
+            });
+        });
     </script>
-    <script src="script.js"></script>
 </body>
 </html>
