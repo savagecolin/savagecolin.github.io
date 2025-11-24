@@ -1,3 +1,8 @@
+# Enhanced Personal Website with Stock Ticker & Effects
+
+I'll implement your requested features with the GIF backgrounds and add the stock ticker and subtle cursor effects. Here's the complete solution:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +28,7 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            cursor: none;
         }
 
         html {
@@ -119,6 +125,80 @@
             color: white;
         }
 
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(30, 58, 138, 0.3);
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-follower {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--blue);
+            pointer-events: none;
+            z-index: 9998;
+            transition: all 0.15s ease;
+        }
+
+        /* Stock Ticker */
+        .ticker-container {
+            background: var(--blue-dark);
+            color: white;
+            padding: 8px 0;
+            overflow: hidden;
+            position: relative;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .ticker {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker-scroll 60s linear infinite;
+        }
+
+        .ticker-item {
+            display: flex;
+            align-items: center;
+            margin-right: 30px;
+        }
+
+        .ticker-symbol {
+            font-weight: 700;
+            margin-right: 5px;
+        }
+
+        .ticker-price {
+            margin-right: 5px;
+        }
+
+        .ticker-change {
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-up {
+            color: #10B981;
+        }
+
+        .ticker-down {
+            color: #EF4444;
+        }
+
+        @keyframes ticker-scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
         /* Cinemagraph Container */
         .cinemagraph-container {
             position: absolute;
@@ -140,7 +220,7 @@
         /* Header & Navigation */
         header {
             position: fixed;
-            top: 0;
+            top: 40px; /* Account for ticker height */
             left: 0;
             width: 100%;
             z-index: 1000;
@@ -151,6 +231,7 @@
 
         header.scrolled {
             padding: 10px 0;
+            top: 0;
         }
 
         nav {
@@ -610,10 +691,25 @@
                 width: 200px;
                 height: 200px;
             }
+            
+            .cursor, .cursor-follower {
+                display: none;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Stock Ticker -->
+    <div class="ticker-container">
+        <div class="ticker" id="stockTicker">
+            <!-- Ticker items will be populated by JavaScript -->
+        </div>
+    </div>
+
     <!-- Header & Navigation -->
     <header id="header">
         <div class="container">
@@ -637,10 +733,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="cinemagraph-container">
-            <!-- Trading Floor Cinemagraph -->
-            <video autoplay muted loop playsinline class="cinemagraph">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-stock-market-graph-in-close-up-43360-large.mp4" type="video/mp4">
-            </video>
+            <!-- Stock Line GIF -->
+            <img src="https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMHc2YjZiczMxNDkwazI1cXZjcjlhZDY4Y2p1bWMyNWl6NDlvYzNoZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/f67U9Xc53i4ViUs5T2/200w.gif" alt="Stock Chart" class="cinemagraph">
         </div>
         <div class="container">
             <div class="hero-content">
@@ -652,7 +746,7 @@
                 </div>
             </div>
             <div class="headshot-container">
-                <img src="https://drive.google.com/uc?export=view&id=1MQktPG3NQUuJSIYqxfCHfiWZmncw_diH" alt="Colin Jones" class="headshot">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQFX5PD7bQdSlA/profile-displayphoto-scale_200_200/B4EZksIFStHoAY-/0/1757381941244?e=1765411200&v=beta&t=bSELorJ4CKhm3YDjn7apDgdf5K-jQZ310cLrp9bFzAc" alt="Colin Jones" class="headshot">
             </div>
         </div>
     </section>
@@ -684,10 +778,8 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="cinemagraph-container">
-            <!-- City Skyline Cinemagraph -->
-            <video autoplay muted loop playsinline class="cinemagraph">
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-aerial-view-of-a-modern-city-at-dusk-43367-large.mp4" type="video/mp4">
-            </video>
+            <!-- Chicago Skyline GIF -->
+            <img src="https://i.pinimg.com/originals/26/06/e0/2606e0d939afb8644cde4f3c1290da5c.gif" alt="Chicago Skyline" class="cinemagraph">
         </div>
         <div class="container">
             <div class="about-content">
@@ -710,239 +802,4 @@
                         <span class="skill">Financial Modeling</span>
                         <span class="skill">Leadership</span>
                     </div>
-                </div>
-                <div class="about-image">
-                    <!-- Additional image or content can go here -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section class="experience" id="experience">
-        <div class="container">
-            <h2>Experience</h2>
-            <div class="experience-grid">
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <h3>Team Leader</h3>
-                        <div class="experience-company">CME Group University Trading Challenge</div>
-                        <div class="experience-date">Fall 2025</div>
-                    </div>
-                    <div class="experience-content">
-                        <ul>
-                            <li>Led a team of 4 in managing a simulated $1M multi-asset futures portfolio</li>
-                            <li>Developed and executed trading strategies under real market conditions</li>
-                            <li>Implemented risk management protocols including position limits and stop-loss parameters</li>
-                        </ul>
-                        <div class="achievement-badge">Top 12.5% Performance | $230K Profit</div>
-                    </div>
-                </div>
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <h3>Real Estate Private Equity Intern</h3>
-                        <div class="experience-company">Project Destined</div>
-                        <div class="experience-date">Sep 2025 - Oct 2025</div>
-                    </div>
-                    <div class="experience-content">
-                        <ul>
-                            <li>Evaluated live real estate investment opportunities through market research and underwriting analysis</li>
-                            <li>Analyzed demographic, rental, and comparable property data to assess market positioning</li>
-                            <li>Developed financial models and gained expertise in acquisition strategies and financing structures</li>
-                        </ul>
-                        <a href="https://certificates.projectdestined.com/credentials/51b0b0b4-040f-43d9-9ffc-8661324d1c8d" class="achievement-badge" style="display: inline-block; margin-top: 10px;">View Credential</a>
-                    </div>
-                </div>
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <h3>Media Arts Intern</h3>
-                        <div class="experience-company">Rockford Public Schools</div>
-                        <div class="experience-date">Jun 2023 – Aug 2025</div>
-                    </div>
-                    <div class="experience-content">
-                        <ul>
-                            <li>Coordinated and facilitated group activities for teachers and students</li>
-                            <li>Produced video and photo content to enhance program visibility</li>
-                            <li>Adapted to diverse environments by rotating between locations and groups</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Education Section -->
-    <section class="education" id="education">
-        <div class="container">
-            <h2>Education</h2>
-            <div class="education-item">
-                <div class="education-logo">
-                    <img src="https://universitymarketing.illinoisstate.edu/images/identity/ISU-Seal_1C_186.png" alt="Illinois State University">
-                </div>
-                <div style="flex: 1;">
-                    <div class="education-header">
-                        <div>
-                            <h3>Illinois State University</h3>
-                            <p>Bachelor of Science in Finance, Minor in Economics</p>
-                        </div>
-                        <div class="education-details">
-                            <div>Aug 2023 - May 2027</div>
-                            <div class="gpa">GPA: 3.77/4.0</div>
-                        </div>
-                    </div>
-                    <p><strong>Activities:</strong> Redbird Investment and Trading Group (President), Real Estate Investment Club, Illinois State Students in Finance, Calisthenics Club</p>
-                    <p><strong>Honors:</strong> Dean's List (Fall 2024, Spring 2025), Redbird Academic Scholarship</p>
-                    <p><strong>Relevant Coursework:</strong> Financial Accounting, Managerial Accounting, Finance Fundamentals, Economic Reasoning Using Statistics, Business Organization and Management, Microeconomics, Macroeconomics, Calculus I, Legal Environment of Business, Computer Applications in Business</p>
-                </div>
-            </div>
-            <div class="education-item">
-                <div class="education-logo">
-                    <!-- Placeholder for high school logo -->
-                    <div style="width: 80px; height: 80px; background: var(--gray-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
-                        <i class="fas fa-school"></i>
-                    </div>
-                </div>
-                <div style="flex: 1;">
-                    <div class="education-header">
-                        <div>
-                            <h3>Rockford Lutheran School</h3>
-                            <p>High School Diploma</p>
-                        </div>
-                        <div class="education-details">
-                            <div>Aug 2019 - May 2023</div>
-                        </div>
-                    </div>
-                    <p><strong>Activities:</strong> National Honor Society</p>
-                    <p><strong>Achievements:</strong> Recipient of Diploma II</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Organizations Section -->
-    <section class="organizations" id="organizations">
-        <div class="container">
-            <h2>Leadership & Organizations</h2>
-            <div class="org-card">
-                <div class="org-logo">
-                    <img src="https://drive.google.com/uc?export=view&id=1H-xoIvwCGVlle6WYuP3JretuXnx6EoQ0" alt="Redbird Investment and Trading Group" style="filter: brightness(0) invert(1);">
-                </div>
-                <div style="flex: 1;">
-                    <div class="org-header">
-                        <div>
-                            <h3>Redbird Investment and Trading Group</h3>
-                            <p>Illinois State University</p>
-                        </div>
-                        <div class="org-role">President</div>
-                    </div>
-                    <ul>
-                        <li>Lead portfolio management simulations and conduct detailed stock market analyses</li>
-                        <li>Mentor members and facilitate educational discussions on investment strategies</li>
-                        <li>Organize guest speaker events and professional development workshops</li>
-                        <li>Manage a portfolio that has outperformed the S&P 500 during certain periods</li>
-                        <li>Increased membership attendance and retention through strategic initiatives</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="org-card">
-                <div class="org-logo">
-                    <!-- Placeholder for other org logos -->
-                    <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-users" style="color: white;"></i>
-                    </div>
-                </div>
-                <div style="flex: 1;">
-                    <div class="org-header">
-                        <div>
-                            <h3>Illinois State Students in Finance</h3>
-                            <p>Illinois State University</p>
-                        </div>
-                        <div class="org-role">Member</div>
-                    </div>
-                    <ul>
-                        <li>Attend organization meetings to stay informed on finance-related opportunities and industry trends</li>
-                        <li>Engage in professional development opportunities to enhance knowledge of financial careers</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="org-card">
-                <div class="org-logo">
-                    <!-- Placeholder for other org logos -->
-                    <div style="width: 60px; height: 60px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-building" style="color: white;"></i>
-                    </div>
-                </div>
-                <div style="flex: 1;">
-                    <div class="org-header">
-                        <div>
-                            <h3>Real Estate Investment Club</h3>
-                            <p>Illinois State University</p>
-                        </div>
-                        <div class="org-role">Member</div>
-                    </div>
-                    <ul>
-                        <li>Evaluate macroeconomic indicators and their impact on real estate markets</li>
-                        <li>Research investment opportunities across residential and commercial sectors</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Get In Touch</h2>
-            <p>I'm always open to discussing finance opportunities, investment strategies, or potential collaborations.</p>
-            <div class="contact-links">
-                <a href="mailto:crjone3@ilstu.edu" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    <span>crjone3@ilstu.edu</span>
-                </a>
-                <a href="https://linkedin.com/in/colinjones6" class="contact-link">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://instagram.com/redbirdinvestments" class="contact-link">
-                    <i class="fab fa-instagram"></i>
-                    <span>@redbirdinvestments</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Colin Jones. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
-</body>
-</html>
+                </
