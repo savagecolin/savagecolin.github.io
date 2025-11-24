@@ -186,20 +186,6 @@
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMHc2YjZiczMxNDkwazI1cXZjcjlhZDY4Y2p1bWMyNWl6NDlvYzNoZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/f67U9Xc53i4ViUs5T2/200w.gif');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.1;
-            z-index: 0;
-        }
-
         .hero-content {
             max-width: 700px;
             z-index: 1;
@@ -281,7 +267,7 @@
             background-image: url('https://i.pinimg.com/originals/26/06/e0/2606e0d939afb8644cde4f3c1290da5c.gif');
             background-size: cover;
             background-position: center;
-            opacity: 0.03;
+            opacity: 0.08;
             z-index: 0;
         }
 
@@ -304,12 +290,13 @@
         }
 
         .mission-statement {
-            background: #F8FAFC;
+            background: rgba(248, 250, 252, 0.8);
             padding: 25px;
             border-radius: 10px;
             border-left: 4px solid var(--blue);
             margin: 25px 0;
             font-style: italic;
+            backdrop-filter: blur(5px);
         }
 
         .skills {
@@ -320,24 +307,42 @@
         }
 
         .skill {
-            background: #F1F5F9;
+            background: rgba(241, 245, 249, 0.8);
             padding: 8px 15px;
             border-radius: 30px;
             font-size: 0.9rem;
             font-weight: 500;
             border: 1px solid #E2E8F0;
             color: var(--gray-dark);
+            backdrop-filter: blur(5px);
         }
 
         /* Experience Section */
         .experience {
             background: #F8FAFC;
+            position: relative;
+        }
+
+        .experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMHc2YjZiczMxNDkwazI1cXZjcjlhZDY4Y2p1bWMyNWl6NDlvYzNoZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/f67U9Xc53i4ViUs5T2/200w.gif');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.05;
+            z-index: 0;
         }
 
         .experience-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .experience-card {
@@ -397,6 +402,23 @@
             font-size: 0.8rem;
             font-weight: 600;
             margin-top: 10px;
+        }
+
+        /* Personal Investments Section */
+        .investments {
+            background: white;
+            text-align: center;
+        }
+
+        .investments-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .investments-icon {
+            font-size: 3rem;
+            color: var(--blue);
+            margin-bottom: 20px;
         }
 
         /* Education Section */
@@ -478,7 +500,7 @@
         .org-logo img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
             border-radius: 50%;
         }
 
@@ -637,6 +659,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#experience">Experience</a></li>
+                    <li><a href="#investments">Investments</a></li>
                     <li><a href="#education">Education</a></li>
                     <li><a href="#organizations">Leadership</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -773,6 +796,20 @@
         </div>
     </section>
 
+    <!-- Personal Investments Section -->
+    <section class="investments" id="investments">
+        <div class="container">
+            <div class="investments-content">
+                <div class="investments-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Personal Investments</h2>
+                <p>Since 2023, I've been actively managing my personal investment portfolio, applying the same disciplined approach and analytical skills I use in academic and professional settings. This hands-on experience has provided practical insights into market dynamics, risk management, and long-term wealth building strategies.</p>
+                <p>My personal investment philosophy focuses on fundamental analysis, diversification, and maintaining a long-term perspective while actively managing risk exposure.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- Education Section -->
     <section class="education" id="education">
         <div class="container">
@@ -824,7 +861,7 @@
             <h2>Leadership & Organizations</h2>
             <div class="org-card">
                 <div class="org-logo">
-                    <img src="https://scontent-ord5-3.cdninstagram.com/v/t51.2885-19/582356436_17884658904402201_1726727494237965404_n.jpg?stp=dst-jpg_s150x150_tt6&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby40MDUuYzIifQ&_nc_ht=scontent-ord5-3.cdninstagram.com&_nc_cat=109&_nc_oc=Q6cZ2QH3p-ZiHYYbDwkMPSs2QLeV8-1eNK0HhizNPygQc3bgx-s4P45KJRBtEuqnjTjTm9eaij2NNZCOy-wZRKegUvqr&_nc_ohc=OxmoNwIPYW4Q7kNvwHL9usX&_nc_gid=wpLeJG031HSY7WEFEm7ocQ&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_AfhCY2CIBe74aPe547pzdhU70QKl9r4nOrulgH6zvmO71g&oe=6929A20F&_nc_sid=7a9f4b" alt="Redbird Investment and Trading Group">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQEhkBbj5HjZAQ/profile-displayphoto-shrink_200_200/B56ZSGPLpBHQAc-/0/1737418914658?e=1765411200&v=beta&t=tdzDxhT3gv7Wnfq-40IElBW2kelicCy5HuBMy2a6hb0" alt="Redbird Investment and Trading Group">
                 </div>
                 <div style="flex: 1;">
                     <div class="org-header">
