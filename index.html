@@ -1,1 +1,174 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinSavvy Pro | Finance Professional</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="components/navbar.js"></script>
+    <script src="components/footer.js"></script>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <custom-navbar></custom-navbar>
+
+    <main class="container mx-auto px-4 py-12">
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row items-center justify-between gap-12 mb-20">
+            <div class="md:w-1/2">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 text-indigo-700">Maximizing Wealth, Minimizing Risk</h1>
+                <p class="text-xl text-gray-600 mb-8">Strategic financial solutions tailored to your unique goals. With over a decade in investment banking and portfolio management, I help clients navigate complex markets with confidence.</p>
+                <div class="flex gap-4">
+                    <a href="#contact" class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg font-medium transition duration-300">Get in Touch</a>
+                    <a href="#services" class="border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition duration-300">My Services</a>
+                </div>
+            </div>
+            <div class="md:w-1/2">
+                <img src="http://static.photos/finance/640x360/42" alt="Finance Professional" class="rounded-xl shadow-xl w-full h-auto">
+            </div>
+        </section>
+
+        <!-- Expertise Section -->
+        <section id="expertise" class="mb-20">
+            <h2 class="text-3xl font-bold mb-12 text-center text-indigo-700">Areas of Expertise</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-feather="trending-up" class="text-indigo-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Investment Strategy</h3>
+                    <p class="text-gray-600">Custom portfolio construction with optimal asset allocation for your risk profile and financial objectives.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-feather="dollar-sign" class="text-indigo-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Wealth Management</h3>
+                    <p class="text-gray-600">Comprehensive financial planning including tax optimization, estate planning, and retirement strategies.</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i data-feather="bar-chart-2" class="text-indigo-600 w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Market Analysis</h3>
+                    <p class="text-gray-600">Data-driven insights into market trends, economic indicators, and emerging opportunities.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="mb-20 bg-indigo-50 rounded-xl p-12">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3">
+                    <img src="http://static.photos/office/640x360/23" alt="Professional Headshot" class="rounded-xl shadow-md w-full h-auto">
+                </div>
+                <div class="md:w-2/3">
+                    <h2 class="text-3xl font-bold mb-6 text-indigo-700">About Me</h2>
+                    <p class="text-lg text-gray-600 mb-6">With 12 years of experience in global financial markets, I've helped high-net-worth individuals and institutional clients achieve their financial objectives through disciplined investment strategies and innovative wealth solutions.</p>
+                    <p class="text-lg text-gray-600 mb-6">Former Vice President at Goldman Sachs and current CFA charterholder, I bring a unique combination of technical expertise and practical market experience to every client relationship.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-white px-4 py-2 rounded-full text-indigo-600 font-medium shadow-sm">CFA Charterholder</span>
+                        <span class="bg-white px-4 py-2 rounded-full text-indigo-600 font-medium shadow-sm">MBA, Wharton</span>
+                        <span class="bg-white px-4 py-2 rounded-full text-indigo-600 font-medium shadow-sm">Series 7 & 63</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="mb-20">
+            <h2 class="text-3xl font-bold mb-12 text-center text-indigo-700">Professional Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-indigo-600">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-700">Private Client Advisory</h3>
+                    <p class="text-gray-600 mb-6">Personalized investment management for individuals and families with assets over $2M.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
+                            <span>Custom portfolio construction</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
+                            <span>Tax-efficient investing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
+                            <span>Family office services</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-indigo-600 font-medium hover:text-indigo-800 transition duration-300 flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-md border-t-4 border-indigo-600">
+                    <h3 class="text-xl font-bold mb-4 text-indigo-700">Institutional Consulting</h3>
+                    <p class="text-gray-600 mb-6">Strategic advisory for endowments, foundations, and corporate clients.</p>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
+                            <span>Asset-liability management</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
+                            <span>Manager selection & due diligence</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check" class="text-green-500 mr-2 mt-1"></i>
+                            <span>ESG integration</span>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="text-indigo-600 font-medium hover:text-indigo-800 transition duration-300 flex items-center">
+                        Learn more <i data-feather="arrow-right" class="ml-2 w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="bg-indigo-700 text-white rounded-xl p-12 mb-20">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-2">Ready to discuss your financial goals?</h2>
+                <p class="text-xl text-indigo-100 mb-8">Schedule a confidential consultation to explore how we can work together.</p>
+                
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="name" class="block mb-2 font-medium">Full Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                        <label for="email" class="block mb-2 font-medium">Email Address</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                        <label for="phone" class="block mb-2 font-medium">Phone Number</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
+                    </div>
+                    <div>
+                        <label for="service" class="block mb-2 font-medium">Service Interest</label>
+                        <select id="service" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white">
+                            <option value="">Select a service</option>
+                            <option value="private">Private Client Advisory</option>
+                            <option value="institutional">Institutional Consulting</option>
+                            <option value="other">Other Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="message" class="block mb-2 font-medium">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-indigo-800 border border-indigo-600 focus:outline-none focus:ring-2 focus:ring-white"></textarea>
+                    </div>
+                    <button type="submit" class="md:col-span-2 bg-white text-indigo-700 hover:bg-indigo-100 px-6 py-3 rounded-lg font-bold transition duration-300">Submit Inquiry</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <custom-footer></custom-footer>
+
+    <script>
+        feather.replace();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
