@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colin Jones</title>
+    <title>Colin Jones | Finance Professional</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Dark Theme Color Scheme */
@@ -123,58 +123,6 @@
         .btn-outline:hover {
             background: var(--accent);
             color: var(--primary);
-        }
-
-        /* Stock Ticker */
-        .ticker-container {
-            background: var(--secondary);
-            color: var(--text);
-            padding: 8px 0;
-            overflow: hidden;
-            position: relative;
-            font-size: 0.9rem;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
-        }
-
-        .ticker {
-            display: flex;
-            white-space: nowrap;
-            animation: ticker-scroll 60s linear infinite;
-        }
-
-        .ticker-item {
-            display: flex;
-            align-items: center;
-            margin-right: 30px;
-        }
-
-        .ticker-symbol {
-            font-weight: 700;
-            margin-right: 5px;
-            color: var(--accent);
-        }
-
-        .ticker-price {
-            margin-right: 5px;
-        }
-
-        .ticker-change {
-            display: flex;
-            align-items: center;
-        }
-
-        .ticker-up {
-            color: #10B981;
-        }
-
-        .ticker-down {
-            color: #EF4444;
-        }
-
-        @keyframes ticker-scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
         }
 
         /* Header & Navigation */
@@ -341,6 +289,83 @@
 
         .stat-item p {
             color: var(--text-secondary);
+        }
+
+        /* Investments Section */
+        .investments {
+            background: var(--primary);
+        }
+
+        .investments-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .investment-card {
+            background: var(--secondary);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .investment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent);
+        }
+
+        .investment-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .investment-symbol {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .investment-name {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .investment-return {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        .return-positive {
+            color: #10B981;
+        }
+
+        .return-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            background: rgba(16, 185, 129, 0.1);
+            color: #10B981;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .investment-date {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 15px;
+            text-align: center;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            padding-top: 10px;
         }
 
         /* About Section */
@@ -701,6 +726,10 @@
             .experience-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .investments-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
         }
 
         @media (max-width: 480px) {
@@ -724,17 +753,25 @@
                 width: 200px;
                 height: 200px;
             }
+            
+            .investment-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .investment-return {
+                text-align: left;
+                margin-top: 10px;
+                font-size: 1.5rem;
+            }
+            
+            .investments-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Stock Ticker -->
-    <div class="ticker-container">
-        <div class="ticker" id="stockTicker">
-            <!-- Ticker items will be populated by JavaScript -->
-        </div>
-    </div>
-
     <!-- Header & Navigation -->
     <header id="header">
         <div class="container">
@@ -777,7 +814,7 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>3.82</h3>
+                    <h3>3.77</h3>
                     <p>GPA</p>
                 </div>
                 <div class="stat-item">
@@ -793,6 +830,104 @@
                     <p>RITG Members Led</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Investments Section -->
+    <section class="investments" id="investments">
+        <div class="container">
+            <h2>Successful Investments</h2>
+            <p>Selected investment performance as of January 5, 2026</p>
+            <div class="investments-grid">
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">RKLB</div>
+                            <div class="investment-name">Rocket Lab USA Inc.</div>
+                        </div>
+                        <div class="investment-return return-positive">+60.75%</div>
+                    </div>
+                    <span class="return-tag">Aerospace & Defense</span>
+                </div>
+                
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">BABA</div>
+                            <div class="investment-name">Alibaba Group</div>
+                        </div>
+                        <div class="investment-return return-positive">+37.93%</div>
+                    </div>
+                    <span class="return-tag">E-commerce</span>
+                </div>
+                
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">XPEV</div>
+                            <div class="investment-name">Xpeng Inc.</div>
+                        </div>
+                        <div class="investment-return return-positive">+52.54%</div>
+                    </div>
+                    <span class="return-tag">Electric Vehicles</span>
+                </div>
+                
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">CRWD</div>
+                            <div class="investment-name">CrowdStrike Holdings</div>
+                        </div>
+                        <div class="investment-return return-positive">+88.37%</div>
+                    </div>
+                    <span class="return-tag">Cybersecurity</span>
+                </div>
+                
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">AUPH</div>
+                            <div class="investment-name">Aurinia Pharmaceuticals</div>
+                        </div>
+                        <div class="investment-return return-positive">+174.39%</div>
+                    </div>
+                    <span class="return-tag">Biotechnology</span>
+                </div>
+                
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">TTWO</div>
+                            <div class="investment-name">Take-Two Interactive</div>
+                        </div>
+                        <div class="investment-return return-positive">+76.11%</div>
+                    </div>
+                    <span class="return-tag">Video Games</span>
+                </div>
+                
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">LUNR</div>
+                            <div class="investment-name">Intuitive Machines Inc.</div>
+                        </div>
+                        <div class="investment-return return-positive">+189.05%</div>
+                    </div>
+                    <span class="return-tag">Space Technology</span>
+                </div>
+                
+                <div class="investment-card">
+                    <div class="investment-header">
+                        <div>
+                            <div class="investment-symbol">XIACY</div>
+                            <div class="investment-name">Xiaomi Corporation</div>
+                        </div>
+                        <div class="investment-return return-positive">+159.37%</div>
+                    </div>
+                    <span class="return-tag">Consumer Electronics</span>
+                </div>
+            </div>
+            <div class="investment-date">Performance data as of January 5, 2026</div>
         </div>
     </section>
 
@@ -893,7 +1028,7 @@
                         </div>
                         <div class="education-details">
                             <div>Aug 2023 - May 2027</div>
-                            <div class="gpa">GPA: 3.82/4.0</div>
+                            <div class="gpa">GPA: 3.77/4.0</div>
                         </div>
                     </div>
                     <p><strong>Activities:</strong> Redbird Investment and Trading Group (President), Real Estate Investment Club, Illinois State Students in Finance, Calisthenics Club</p>
@@ -993,102 +1128,4 @@
             <p>I'm always open to discussing finance opportunities, investment strategies, or potential collaborations.</p>
             <div class="contact-links">
                 <a href="mailto:crjone3@ilstu.edu" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    <span>crjone3@ilstu.edu</span>
-                </a>
-                <a href="https://linkedin.com/in/colinjones6" class="contact-link" target="_blank">
-                    <i class="fab fa-linkedin"></i>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://instagram.com/redbirdinvestments" class="contact-link" target="_blank">
-                    <i class="fab fa-instagram"></i>
-                    <span>@redbirdinvestments</span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Colin Jones. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        // Stock Ticker with Mock Data
-        const ticker = document.getElementById('stockTicker');
-        const symbols = ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'TSLA', 'SPY', 'QQQ', 'DIA'];
-        
-        // Function to create ticker item
-        function createTickerItem(symbol, price, change, changePercent) {
-            const item = document.createElement('div');
-            item.className = 'ticker-item';
-            
-            const changeClass = change >= 0 ? 'ticker-up' : 'ticker-down';
-            const changeIcon = change >= 0 ? '▲' : '▼';
-            
-            item.innerHTML = `
-                <span class="ticker-symbol">${symbol}</span>
-                <span class="ticker-price">$${price}</span>
-                <span class="ticker-change ${changeClass}">
-                    ${changeIcon} ${Math.abs(change).toFixed(2)} (${Math.abs(changePercent).toFixed(2)}%)
-                </span>
-            `;
-            
-            return item;
-        }
-        
-        // Mock data for demonstration
-        const mockStockData = [
-            { symbol: 'AAPL', price: 182.63, change: 1.25, changePercent: 0.69 },
-            { symbol: 'MSFT', price: 407.54, change: -2.31, changePercent: -0.56 },
-            { symbol: 'GOOGL', price: 171.48, change: 0.87, changePercent: 0.51 },
-            { symbol: 'AMZN', price: 178.22, change: 3.14, changePercent: 1.79 },
-            { symbol: 'TSLA', price: 246.39, change: -5.72, changePercent: -2.27 },
-            { symbol: 'SPY', price: 520.34, change: 1.28, changePercent: 0.25 },
-            { symbol: 'QQQ', price: 443.67, change: 2.15, changePercent: 0.49 },
-            { symbol: 'DIA', price: 387.91, change: -0.42, changePercent: -0.11 }
-        ];
-        
-        // Populate ticker with mock data
-        mockStockData.forEach(stock => {
-            ticker.appendChild(createTickerItem(
-                stock.symbol, 
-                stock.price, 
-                stock.change, 
-                stock.changePercent
-            ));
-        });
-        
-        // Duplicate content for seamless scrolling
-        const tickerContent = ticker.innerHTML;
-        ticker.innerHTML += tickerContent;
-
-        // Header scroll effect
-        window.addEventListener('scroll', function() {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        
-        hamburger.addEventListener('click', function() {
-            navLinks.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-    </script>
-</body>
-</html>
+                    <i class="
